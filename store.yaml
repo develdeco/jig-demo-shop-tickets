@@ -1,0 +1,7 @@
+schema_version: 3
+keys:
+    SHOP: everything in shop
+trackers: []
+platform: platform/
+projects:
+    - shop
