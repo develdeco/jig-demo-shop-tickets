@@ -1,7 +1,10 @@
 schema_version: 3
 keys:
     SHOP: everything in shop
-trackers: []
+trackers:
+    - github:
+        repo: develdeco/jig-demo-shop
+        project: https://github.com/users/develdeco/projects/3
 platform: platform/
 projects:
     - shop
