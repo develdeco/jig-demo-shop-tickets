@@ -1,0 +1,3 @@
+schema_version: 1
+title: 'cart.Total: discount once on order, round to cent, clamp percent'
+slug: cart-total-discount-once-on-order-round
