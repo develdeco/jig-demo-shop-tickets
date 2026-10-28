@@ -1,0 +1,30 @@
+{
+  "ticket": "SHOP-1",
+  "round": 1,
+  "scope": "full",
+  "base_sha": "1fd962bb010ad0075eb6ff45653bc6cd74fee58d",
+  "head_sha": "c37e7f5236b72af5b9ca31c515cb88f9fe319bae",
+  "intent": {
+    "source": "brief",
+    "path": "D:\\DECO\\repos\\jig-demo\\shop-tickets\\tickets\\SHOP-1\\brief.md"
+  },
+  "slices_path": "D:\\DECO\\repos\\jig-demo\\shop-tickets\\tickets\\SHOP-1\\slices.yaml",
+  "journal_path": "D:\\DECO\\repos\\jig-demo\\shop-tickets\\tickets\\SHOP-1\\journal.ndjson",
+  "oracles": [
+    "test"
+  ],
+  "oracles_passed": [
+    {
+      "oracle": "test",
+      "workspace": "cart",
+      "command": "go test ./cart/...",
+      "reused_from": "c37e7f5236b72af5b9ca31c515cb88f9fe319bae"
+    }
+  ],
+  "open": [],
+  "dismissed": [],
+  "must_review": [
+    "cart/cart.go",
+    "cart/cart_test.go"
+  ]
+}

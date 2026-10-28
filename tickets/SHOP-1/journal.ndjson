@@ -3,3 +3,4 @@
 {"ts":"2026-10-28T04:23:55.6169794Z","ticket":"SHOP-1","slice":"round","event":"verify-pending","commit":"c37e7f5236b72af5b9ca31c515cb88f9fe319bae","attempt":1,"session":"c885be2e-07dc-4251-b81c-169c874c3db3","summary":"cart: take the discount once on the order, round to the cent, clamp percent"}
 {"ts":"2026-10-28T04:24:00.9459477Z","ticket":"SHOP-1","slice":"round","event":"oracle","outcome":"pass","commit":"c37e7f5236b72af5b9ca31c515cb88f9fe319bae","attempt":1,"command":"go test ./cart/...","seconds":1,"session":"c885be2e-07dc-4251-b81c-169c874c3db3","source":"jig"}
 {"ts":"2026-10-28T04:24:00.9514647Z","ticket":"SHOP-1","slice":"round","event":"verified","commit":"c37e7f5236b72af5b9ca31c515cb88f9fe319bae","attempt":1,"session":"c885be2e-07dc-4251-b81c-169c874c3db3"}
+{"ts":"2026-10-28T04:24:40.5665348Z","ticket":"SHOP-1","event":"gate-open","attempt":1}
