@@ -4,9 +4,14 @@ repo: develdeco/jig-demo-shop
 issue: 25
 node_id: I_kwDOVViJQc8AAAABafPosg
 item: PVTI_lAHOAAreQ84Bo_utzhEFoog
+prs:
+    - repo: develdeco/jig-demo-shop
+      number: 26
+      node_id: PR_kwDOVViJQc8AAAABLLhKxg
+      item: PVTI_lAHOAAreQ84Bo_utzhEFvno
 synced:
     title: 'cart.Total: discount once on order, round to cent, clamp percent'
-    body_sha256: 353bc2cb7989e19b7db04e2cf7bf12c7e64f91ae63fe934f016f3d596947dd4b
+    body_sha256: 08dcf53ad325dec691e788f437c78f5f14442c703e404cbf7625a4b0447fd012
     state: OPEN
-    status: In progress
+    status: In review
     store_id: SHOP-1
