@@ -1,0 +1,16 @@
+round: 2
+ticket: SHOP-1
+repo: shop
+branch: 25-cart-total-discount-once-on-order-round
+copy: the clone's
+head: fbd8f4616914e861a67f234b3f00e65b5580ceb9
+base: c37e7f5236b72af5b9ca31c515cb88f9fe319bae
+scope: delta
+target: main
+target_sha: 1fd962bb010ad0075eb6ff45653bc6cd74fee58d
+lease: pool/shop/SHOP-1-gate
+intent:
+    source: brief
+    sha256: ffcbb6a871f39af672d63fbc5247a4ba76049c5ca1d17926691f31493dc90be3
+request: evidence/f40d52adbbf86484/SHOP-1/reviews/round-2/review.json
+opened: "2026-10-28T04:29:25.5796983Z"
