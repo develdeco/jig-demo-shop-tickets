@@ -6,7 +6,7 @@ node_id: I_kwDOVViJQc8AAAABafPosg
 item: PVTI_lAHOAAreQ84Bo_utzhEFoog
 synced:
     title: 'cart.Total: discount once on order, round to cent, clamp percent'
-    body_sha256: 5e77dc91f2fc625a843e74454988f4f255f17cc35e873ddc14c9cfebcb608138
+    body_sha256: f9794a294ac80d75dc25829eb86d845c3060cf9cf0440c01a7d3351a666a4a60
     state: OPEN
     status: In progress
     store_id: SHOP-1
