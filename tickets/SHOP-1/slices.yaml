@@ -1,14 +1,28 @@
 slices:
-  - id: round
-    workspace: cart
-    goal: Take the discount once on the order total, round to the nearest cent, and clamp discountPct to [0, 100].
-    oracle: test
-    blocked_by: []
-    from_brief:
-      - 24d0719c2593efbe649a4521457156da0605a844e2e51237c0117aeb2b565b42
-      - 248a596eb94b1e075e9c349fed68f35dd4bddbf71fe1d392fbf7a7a0dc2c8181
-      - 33a930a4c4068268925a447cc595542bc95f6d99e7d5868f853684e911f95eef
-      - 67499fd24960a4c282e861bbc69396bb94097e7d6638375f954e35d7b6a15ada
-      - d88bf634d8209da9df844caaf49dad3d248d401fc72fcd2a6d8cb7284f047501
-      - 9ae4ae1f142188d2538fd70379b9c4c4a4363948ed37ac7a818e956687728ea6
-      - a9f0ff47fb758adad3a38e16b32dbb13bd3719fbb8f10a76325784cf3ddc8d91
+    - id: round
+      workspace: cart
+      goal: Take the discount once on the order total, round to the nearest cent, and clamp discountPct to [0, 100].
+      oracle: test
+      blocked_by: []
+      from_brief:
+        - 24d0719c2593efbe649a4521457156da0605a844e2e51237c0117aeb2b565b42
+        - 248a596eb94b1e075e9c349fed68f35dd4bddbf71fe1d392fbf7a7a0dc2c8181
+        - 33a930a4c4068268925a447cc595542bc95f6d99e7d5868f853684e911f95eef
+        - 67499fd24960a4c282e861bbc69396bb94097e7d6638375f954e35d7b6a15ada
+        - d88bf634d8209da9df844caaf49dad3d248d401fc72fcd2a6d8cb7284f047501
+        - 9ae4ae1f142188d2538fd70379b9c4c4a4363948ed37ac7a818e956687728ea6
+        - a9f0ff47fb758adad3a38e16b32dbb13bd3719fbb8f10a76325784cf3ddc8d91
+    - id: fix-1-cart-test
+      workspace: cart
+      goal: |-
+        Fix these gate findings:
+
+        cart/cart_test.go:9 No test pins nearest-cent rounding: dropping the +50 term passes the whole suite
+        The brief's headline decision is that the discount is rounded to the nearest cent, round-half-up on the exact half-cent. Nothing in cart_test.go distinguishes that from plain truncation. All three cases are rounding-indifferent: 999*90=89910 -> 899.1 (truncates to 899 either way), pct clamped to 0 is exact, pct clamped to 100 is 0. Mutation check, run in the round worktree and reverted: replacing cart.go:26 with 'return subtotal * (100 - discountPct) / 100' (the +50 removed, i.e. truncate instead of round) leaves 'go test ./cart/...' green - ok example.com/shop/cart. The surviving mutant means the oracle proves the 'discount once on the order' half of the slice goal but not the 'round to the nearest cent' half. Two cases close it: a plain nearest-cent case where truncation differs - Total([]Item{{PriceCents: 101, Qty: 1}}, 1) is 99.99 -> want 100, truncation gives 99 - and the exact half-cent tie-break the user confirmed, where half-even would differ - Total([]Item{{PriceCents: 50, Qty: 1}}, 3) is 48.50 -> want 49 under round-half-up, 48 under half-even.
+        Risk (medium): Order totals are money and the rounding term is a single unguarded '+ 50'; with no test pinning it, any later rewrite of the expression silently shifts every discounted order by up to a cent, and the oracle stays green. The current head is correct, so the harm is regression exposure on the ticket's own user-confirmed decision rather than a live defect.
+      oracle: test
+      blocked_by: []
+      from_brief: []
+      from_gate: 1
+      findings:
+        - r1-f1

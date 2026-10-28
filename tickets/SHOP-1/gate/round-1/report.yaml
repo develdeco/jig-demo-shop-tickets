@@ -1,0 +1,20 @@
+round: 1
+verdict: fix-slices
+model: claude-opus-5
+target_sha:
+    shop: 1fd962bb010ad0075eb6ff45653bc6cd74fee58d
+reviewed_sha:
+    shop: c37e7f5236b72af5b9ca31c515cb88f9fe319bae
+intent:
+    source: brief
+    sha256: ffcbb6a871f39af672d63fbc5247a4ba76049c5ca1d17926691f31493dc90be3
+independent: true
+reviewer:
+    session: c885be2e-07dc-4251-b81c-169c874c3db3
+    agent: accbf210333d22b5e
+    how: env
+    model: claude-opus-5
+oracle_names:
+    - test
+fix_slices:
+    - fix-1-cart-test
