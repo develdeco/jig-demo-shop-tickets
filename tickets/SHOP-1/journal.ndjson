@@ -9,3 +9,5 @@
 {"ts":"2026-10-28T04:27:40.8178957Z","ticket":"SHOP-1","slice":"fix-1-cart-test","event":"fix-slice","attempt":1}
 {"ts":"2026-10-28T04:28:01.2762741Z","ticket":"SHOP-1","slice":"fix-1-cart-test","event":"claim","session":"c885be2e-07dc-4251-b81c-169c874c3db3","branch":"25-cart-total-discount-once-on-order-round"}
 {"ts":"2026-10-28T04:28:56.5155743Z","ticket":"SHOP-1","slice":"fix-1-cart-test","event":"verify-pending","commit":"fbd8f4616914e861a67f234b3f00e65b5580ceb9","attempt":2,"session":"c885be2e-07dc-4251-b81c-169c874c3db3","summary":"cart: pin nearest-cent rounding against a truncation regression"}
+{"ts":"2026-10-28T04:29:02.637598Z","ticket":"SHOP-1","slice":"fix-1-cart-test","event":"oracle","outcome":"pass","commit":"fbd8f4616914e861a67f234b3f00e65b5580ceb9","attempt":2,"command":"go test ./cart/...","seconds":1,"session":"c885be2e-07dc-4251-b81c-169c874c3db3","source":"jig"}
+{"ts":"2026-10-28T04:29:02.6433522Z","ticket":"SHOP-1","slice":"fix-1-cart-test","event":"verified","commit":"fbd8f4616914e861a67f234b3f00e65b5580ceb9","attempt":2,"session":"c885be2e-07dc-4251-b81c-169c874c3db3"}
