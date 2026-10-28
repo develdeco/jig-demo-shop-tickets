@@ -1,0 +1,17 @@
+# Gate round 2
+
+verdict: clean
+
+r1-f1 is fixed: the two new cases in cart_test.go pin nearest-cent rounding. Mutation check in the round worktree, reverted and re-verified green: replacing cart.go:26 with 'subtotal * (100 - discountPct) / 100' (truncation) now fails TestTotalRoundsUpToTheNearestCent (99 want 100) and TestTotalBreaksExactHalfCentTiesUp (48 want 49); the opposite mutant '+ 99' (ceiling) fails TestTotalRoundsOnceOnTheOrder (900 want 899), so the oracle pins rounding in both directions and pins the user-confirmed round-half-up tie-break against half-even. Both new cases match the brief's arithmetic (101 at 1% = 0.9999 -> 100; 50 at 3% = 0.485 -> 49) and the clamp seams at both bounds stay covered. No new problems in the delta, which touches cart_test.go only. r1-f2 confirmed still present: cart.go:26 is byte-identical in this delta, so the negative-subtotal misrounding stays a note and a known precondition of cart.Total, not something this round changed.
+
+## r1-f2 (low, noted): The +50 rounding term misrounds a negative subtotal, breaking the 0%-discount identity
+
+- file: cart/cart.go:26
+- action: note
+- oracle: test
+- workspace: cart
+- risk rationale: Unreachable while every line total is non-negative, which the person confirmed holds today, so there is no live defect. If that premise ever lapses the error is a silent one cent per order rather than a crash, and it would land in money.
+
+The brief's tie-break decision rests on 'line totals are always non-negative, so there is no sign ambiguity to resolve'. Nothing enforces that: Item.PriceCents is an exported int with no constructor or validation, so a refund or coupon line would carry it in. Worth knowing is that the formula does not merely pick the other tie-break for negatives, it is off by a cent away from ties too, because Go integer division truncates toward zero and the +50 then pushes the quotient the wrong way. Checked with the same expression on scratch values: subtotal=-101 pct=0 returns -100 where the exact value is -101, so 'a 0% discount returns the subtotal unchanged' no longer holds; subtotal=-1 pct=0 returns 0; subtotal=-333 pct=50 returns -166 where round-half-away-from-zero is -167. No change is needed for the intent as written - the non-negative premise is user-confirmed and clamping the price domain is not in this ticket's scope. Flagging it so the premise is a known precondition of cart.Total rather than an implicit one, should a later ticket admit negative lines.
+
+cleared: r1-f1
