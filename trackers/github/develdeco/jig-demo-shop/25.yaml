@@ -3,3 +3,10 @@ ticket: SHOP-1
 repo: develdeco/jig-demo-shop
 issue: 25
 node_id: I_kwDOVViJQc8AAAABafPosg
+item: PVTI_lAHOAAreQ84Bo_utzhEFoog
+synced:
+    title: 'cart.Total: discount once on order, round to cent, clamp percent'
+    body_sha256: e261c43330ff5fa64d2b5b3299a35f21e8923573497f3da81582065ea1ebdc1a
+    state: OPEN
+    status: Backlog
+    store_id: SHOP-1

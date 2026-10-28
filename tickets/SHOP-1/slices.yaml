@@ -1,0 +1,14 @@
+slices:
+  - id: round
+    workspace: cart
+    goal: Take the discount once on the order total, round to the nearest cent, and clamp discountPct to [0, 100].
+    oracle: test
+    blocked_by: []
+    from_brief:
+      - 24d0719c2593efbe649a4521457156da0605a844e2e51237c0117aeb2b565b42
+      - 248a596eb94b1e075e9c349fed68f35dd4bddbf71fe1d392fbf7a7a0dc2c8181
+      - 33a930a4c4068268925a447cc595542bc95f6d99e7d5868f853684e911f95eef
+      - 67499fd24960a4c282e861bbc69396bb94097e7d6638375f954e35d7b6a15ada
+      - d88bf634d8209da9df844caaf49dad3d248d401fc72fcd2a6d8cb7284f047501
+      - 9ae4ae1f142188d2538fd70379b9c4c4a4363948ed37ac7a818e956687728ea6
+      - a9f0ff47fb758adad3a38e16b32dbb13bd3719fbb8f10a76325784cf3ddc8d91
